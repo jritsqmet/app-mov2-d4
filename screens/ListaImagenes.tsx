@@ -2,7 +2,6 @@ import { Alert, Button, FlatList, StyleSheet, Text, TextInput, View } from 'reac
 import React, { useState } from 'react'
 
 export default function ListaImagenes() {
-
   
   const [titulo, settitulo] = useState('')
   const [direccion, setdireccion] = useState('')
@@ -28,11 +27,18 @@ export default function ListaImagenes() {
 
   }
 
-  function eliminar(indice: number){
-    const listaTemp = lista.filter( (item, i) => ( i!= indice) )
+  ///Eliminación del índice
+  function eliminar(indice: any){
+    //const listaTemp = lista.filter( (item, i) => ( i!= indice) )
+    const listaTemp = lista.filter( (item) => ( item!= indice) )
     setlista(listaTemp)
   }
 
+  type Item = {
+    titulo: string;
+    direccion: string;
+  };
+  //////
 
   return (
     <View style={styles.container}>
@@ -55,12 +61,13 @@ export default function ListaImagenes() {
 
        <FlatList
           data ={ lista }      
-          renderItem={ ({item, index})  =>(
+          // renderItem={ ({item, index})  =>(
+          renderItem={ ({item}: { item: Item })  =>(
             <View style={styles.item}>
               <Text>{item.titulo}</Text>
               <Text>{item.direccion}</Text>
-
-              <Button title='ELIMINAR' color={'red'} onPress={ ()=>eliminar(index) }/>
+              
+              <Button title='ELIMINAR' color={'red'} onPress={ ()=>eliminar(item) }/>
             </View>
           ) }
 
