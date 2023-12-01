@@ -2,6 +2,8 @@ import { Alert, Button, FlatList, StyleSheet, Text, TextInput, View } from 'reac
 import React, { useState } from 'react'
 
 export default function ListaImagenes() {
+
+  
   const [titulo, settitulo] = useState('')
   const [direccion, setdireccion] = useState('')
 
